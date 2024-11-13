@@ -1,0 +1,45 @@
+1. Develop Endpoints in TODO service
+2. Develope Task Service
+3.Service Registry
+4.Swagger 
+5.FEign Client
+6.Circuit breaker
+7. OAuth
+8.API Gateway - need some time
+9. Junit testing
+10. Create Task Micro service with Kafka - optional
+
+enable CI/CD pipeline
+
+
+http://localhost:8080/h2-console
+
+
+
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+
+Java - 17
+
+C:\Program Files\Java\jdk-17.0.12\bin
+
+
+node - 20.18.0
+
+node-v20.18.0-x64
+
+pgAdmin 
+postgresql-16.4-1-windows-x64
+
+mongodb - mongoDB compass - C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\MongoDB Inc
+
+
+kafka  - C:\kafka_2.12-3.6.1
+
+
+GitHubDesktopSetup-x64
+
+postman

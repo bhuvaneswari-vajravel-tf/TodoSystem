@@ -7,6 +7,8 @@ import com.todo.task.system.dto.TaskDetailsResponse;
 public interface TaskService {
 
 	TaskDetailsResponse getAllTodos(Integer pageNo, Integer pageSize);
+	
+	TaskDetailsResponse fetchAllTasks();
 
 	TaskDetailsDTO getTaskByName(String taskName);
 	

@@ -47,7 +47,6 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	public TaskDetailsResponse getAllTodos(Integer pageNo, Integer pageSize) {
 
-		// List<TaskEntity> taskEntity = taskRepository.findAll();
 		Sort sort = Sort.by("effort").descending();
 
 		// create Pageable instance
@@ -117,6 +116,24 @@ public class TaskServiceImpl implements TaskService {
 		}
 
 	}
+	
+	@Override
+	public TaskDetailsResponse fetchAllTasks() {
+		 List<TaskEntity> taskEntity = taskRepository.findAll();
+		TaskDetailsResponse taskResponse = new TaskDetailsResponse();
+		
+		if (taskEntity != null && !taskEntity.isEmpty()) {
+			List<TaskDetailsDTO> taskList = taskEntity.stream().map(task -> entityToDtoConvertor(task))
+					.collect(Collectors.toList());
+			taskResponse.setTaskList(taskList);
+			taskResponse.setPageNo(0);
+			taskResponse.setPageSize(taskList.size());
+			taskResponse.setTotalElements(taskList.size());
+			taskResponse.setTotalPages(1);
+			taskResponse.setLast(true);
+		}
+		return taskResponse;
+	}
 
 	private TaskDetailsDTO entityToDtoConvertor(TaskEntity entity) {
 		TaskDetailsDTO task = new TaskDetailsDTO();
@@ -135,5 +152,4 @@ public class TaskServiceImpl implements TaskService {
 				.taskDescription(dto.getTaskDescription()).taskStatus(dto.getTaskStatus()).effort(dto.getEffort())
 				.startDate(dto.getStartDate()).endDate(dto.getEndDate()).isActive(dto.isActive()).build();
 	}
-
 }

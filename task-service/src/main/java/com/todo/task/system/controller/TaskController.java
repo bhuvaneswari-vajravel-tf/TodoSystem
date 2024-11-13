@@ -39,10 +39,17 @@ public class TaskController {
 	public ResponseEntity<TaskDetailsResponse> getAllTodos(
 		 @RequestParam(value = "pageNo", defaultValue ="0", required = false) Integer pageNo,
 		 @RequestParam(value = "pageSize", defaultValue ="5", required = false) Integer pageSize) {
-		log.info("TaskController :: getAllTask::fetching All task details");
+		log.info("TaskController :: getAllTodos::fetching All task details with pagination");
 		return new ResponseEntity<TaskDetailsResponse>(todoService.getAllTodos(pageNo, pageSize), HttpStatus.OK);
 
-	}
+	}	
+	
+	@GetMapping("/list/allTask")
+	public ResponseEntity<TaskDetailsResponse> getAllTasks() {
+		log.info("TaskController :: getAllTask::fetching All task details");
+		return new ResponseEntity<TaskDetailsResponse>(todoService.fetchAllTasks(), HttpStatus.OK);
+
+	}	
 	
 	@GetMapping("/list/{taskName}")
 	public ResponseEntity<TaskDetailsDTO> getTaskByName(@PathVariable(name = "taskName") String taskName) {
